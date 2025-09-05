@@ -33,7 +33,7 @@ import dashboard_icon_3 from './dashboard_icon_3.svg'
 import dashboard_icon_4 from './dashboard_icon_4.svg'
 
 
-export const assets = {
+const  assets = {
     facebook_icon,
     googleplus_icon,
     twitter_icon,
@@ -58,6 +58,7 @@ export const assets = {
     dashboard_icon_3,
     dashboard_icon_4,
 }
+export default assets
 export const blogCategories = ['All', 'Technology', 'Startup', 'Lifestyle', 'Finance']
 
 export const blog_data = [
