@@ -10,6 +10,8 @@ export default function Header() {
             ><p>AI feature Integrated</p>
                 <img src={assets.star_icon} className='w-2.5' alt="" />
             </div>
+                    <h1 className='text-3xl sm:text-6xl font-semibold sm:leading-16 text-gray-700'>Your Own <span className='text-primary'>Blogging</span> <br />Platform</h1>
+
 
         </div>
         <img src={assets.gradientBackground} alt="" className='absolute -top-50 -z-1 opacity-50' />
