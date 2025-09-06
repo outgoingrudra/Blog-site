@@ -8,7 +8,9 @@ export default function BlogList() {
             {/* criteria listing here  */}
             {blogCategories.map((item)=>(
                 <div key={item} className='relative'>
-                    <button>{item}</button>
+                    <button className='cursor-pointer text-gray-500 '>{item}
+                        <div className="absolute left-0 right-0 top-0 h-7 -z-1 bg-primary rounded-full"></div>
+                    </button>
                 </div>
             ))}
 
