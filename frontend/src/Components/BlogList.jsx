@@ -11,7 +11,7 @@ export default function BlogList() {
                 <div key={item} className='relative'>
                     <button onClick={()=>setMenu(item)}
                      className={`cursor-pointer text-gray-500 ${menu===item && 'text-white px-4 pt-0.5'}`}>{item}
-                        <div className="absolute left-0 right-0 top-0 h-7 -z-1 bg-primary rounded-full"></div>
+                       {menu===item && ( <div className="absolute left-0 right-0 top-0 h-7 -z-1 bg-primary rounded-full"></div>)}
                     </button>
                 </div>
             ))}
