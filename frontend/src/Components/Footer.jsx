@@ -1,5 +1,5 @@
 import React from "react";
-import  assets, { footer_data }  from "../assets/assets";
+import assets, { footer_data } from "../assets/assets";
 
 export default function Footer() {
   return (
@@ -14,23 +14,22 @@ export default function Footer() {
           </p>
         </div>
         <div className=" flex flex-wrap justify-between w-full md:w-[45%] gap-5">
-          {
-            footer_data.map((sec,idx)=>(
-              <div className="" key={idx}>
-                <h3>{sec.title}</h3>
-                <ul>
-                  {
-                    sec.links.map((link,i)=>(
-                      <li key={i}>
-                        <a href="#">{link}</a>
-                      </li>
-                    ))
-                  }
-                </ul>
-              </div>
-            ))
-          }
-
+          {footer_data.map((sec, idx) => (
+            <div className="" key={idx}>
+              <h3 className="font-semibold text-base text-gray-900 md:mb-5 mb-2 ">
+                {sec.title}
+              </h3>
+              <ul className=" text-sm space-y-1">
+                {sec.links.map((link, i) => (
+                  <li key={i}>
+                    <a href="#" className="hover:underline transition">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
       <p className="py-4 text-center text-sm md:text-base text-gray-500">
