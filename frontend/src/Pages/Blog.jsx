@@ -25,7 +25,8 @@ export default function Blog() {
             <p className='inline-block py-1 px-4 rounded-full mb-6 border text-sm border-primary/35 bg-primary/5 font-medium text-primary'>Michael Brown</p>
             
             </div>
-            <div className="">  
+            <div className="mx-5  max-w-5xl md:mx-auto my-10 mt-6">  
+              <img src={data.image} alt=""  className='rounded-3xl mb-5'/>
 
             </div>
 
