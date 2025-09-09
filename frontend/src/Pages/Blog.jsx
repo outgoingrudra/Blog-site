@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import assets, {blog_data} from "../assets/assets" 
 import Navbar from"../Components/Navbar"
+import Moment from "moment"
 
 export default function Blog() {
   const {id} =useParams()
@@ -15,9 +16,10 @@ export default function Blog() {
   },[])
   return  data ? (
     <div className='relative'>
-      <img src={assets.gradientBackground} alt="" />
+      <img src={assets.gradientBackground} alt="" className='absolute -top-50 -z-1 opacity-50' />
       <Navbar/>
            <div className="">
+            <p>Published on {Moment(data.createdAt).format('MMMM Do YYYY')}</p>
             
             </div>
             <div className="">  
