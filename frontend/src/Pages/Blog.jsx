@@ -7,6 +7,8 @@ import Moment from "moment"
 export default function Blog() {
   const {id} =useParams()
   const [data ,setdata] = useState(null)
+ const [comment ,setComment] =useState([])
+
   const fetchBlogdata=async ()=>{
    const data =  blog_data.find(item=>item._id==id)
    setdata(data)
@@ -27,7 +29,18 @@ export default function Blog() {
             </div>
             <div className="mx-5  max-w-5xl md:mx-auto my-10 mt-6">  
               <img src={data.image} alt=""  className='rounded-3xl mb-5'/>
-              <div dangerouslySetInnerHTML={{__html:data.description}}></div>
+              <div 
+              className='rich-text max-w-3xl mx-auto'
+              dangerouslySetInnerHTML={{__html:data.description}}></div>
+              {/* comments */}
+              <div className=" mt-14 mb-10 max-w-3xl mx-auto
+              ">
+                <p className="
+                ">
+                  Commen
+                </p>
+
+              </div>
 
             </div>
 
