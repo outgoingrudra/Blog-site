@@ -46,8 +46,17 @@ export default function Blog() {
                 ">
                   Comments ({comment.length})
                 </p>
-                <div className="">
+                <div className="flex flex-col  gap-4 ">
                   {/* comment data */}
+                  {comment.map((item,idx)=>(
+                    <div key={idx} className="relative bg-primary/2 border border-primary/5 max-w-xl p-4 rounded text-gray-600">
+                      <div className="flex items-center gap-2 mb-2">
+                        <img src={assets.user_icon} alt="" className='w-6'/>
+                        <p className='font-medium'>{item.name}</p>
+                      </div>
+
+                    </div>
+                  ))}
                 </div>
 
               </div>
