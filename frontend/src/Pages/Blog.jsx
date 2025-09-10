@@ -42,7 +42,7 @@ export default function Blog() {
               {/* comments */}
               <div className=" mt-14 mb-10 max-w-3xl mx-auto
               ">
-                <p className="
+                <p className=" font-semibold mb-4
                 ">
                   Comments ({comment.length})
                 </p>
@@ -54,7 +54,10 @@ export default function Blog() {
                         <img src={assets.user_icon} alt="" className='w-6'/>
                         <p className='font-medium'>{item.name}</p>
                       </div>
-
+                       <p className='text-sm max-w-md ml-8'>{item.content}</p>
+                       <div className="absolute right-4 bottom-3 flex items-center gap-2 text-xs">
+                        {Moment(item.createdAt).fromNow()}
+                       </div>
                     </div>
                   ))}
                 </div>
