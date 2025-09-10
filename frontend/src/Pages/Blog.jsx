@@ -8,6 +8,8 @@ export default function Blog() {
   const {id} =useParams()
   const [data ,setdata] = useState(null)
  const [comment ,setComment] =useState([])
+ const [name,setName] = useState("")
+ const [content,setContent] = useState("")
 
   const fetchBlogdata=async ()=>{
    const data =  blog_data.find(item=>item._id==id)
@@ -17,6 +19,9 @@ export default function Blog() {
   const fetchComments = async()=>{
     setComment(comments_data)
 
+  }
+  const addcomment =async()=>{
+    console.log("COMMENT ADDED !!! ")
   }
 
   useEffect(()=>{
@@ -73,7 +78,9 @@ export default function Blog() {
                               placeholder='Comment...' required className='h-48 w-full p-2 border border-gray-300 rounded outline-none'
                   ></textarea>
                   
-
+                 <button type='submit' 
+                           className='bg-primary text-white rounded p-2 px-8  hover:scale-102 transition-all cursor-pointer'
+                    >Submit</button>
                 </form>
 
 
