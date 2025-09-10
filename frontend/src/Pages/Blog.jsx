@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
-import assets, {blog_data} from "../assets/assets" 
+import assets, {blog_data, comments_data} from "../assets/assets" 
 import Navbar from"../Components/Navbar"
 import Moment from "moment"
 
@@ -13,8 +13,15 @@ export default function Blog() {
    const data =  blog_data.find(item=>item._id==id)
    setdata(data)
   }
+
+  const fetchComments = async()=>{
+    setComment(comments_data)
+
+  }
+
   useEffect(()=>{
     fetchBlogdata()
+    fetchComments()
   },[])
   return  data ? (
     <div className='relative'>
@@ -37,8 +44,11 @@ export default function Blog() {
               ">
                 <p className="
                 ">
-                  Commen
+                  Comments ({comment.length})
                 </p>
+                <div className="">
+                  {/* comment data */}
+                </div>
 
               </div>
 
