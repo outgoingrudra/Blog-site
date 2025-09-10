@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import assets, {blog_data, comments_data} from "../assets/assets" 
 import Navbar from"../Components/Navbar"
 import Moment from "moment"
+import Footer from "../Components/Footer"
 
 export default function Blog() {
   const {id} =useParams()
@@ -73,8 +74,8 @@ export default function Blog() {
                 <p className='font-semibold mb-4'>Add Your Comments</p>
                 <form action="" onSubmit={addcomment} className='flex flex-col items-start gap-4 max-w-lg'  
                 >
-                  <input type="text" placeholder='Name' required className='w-full p-2 border border-gray-300 rounded outline-none'/>
-                  <textarea name="" id=""
+                  <input onChange={(e)=>setName(e.target.value)} type="text" placeholder='Name' required className='w-full p-2 border border-gray-300 rounded outline-none'/>
+                  <textarea name="" id="" onChange={(e)=>setContent(e.target.value)}
                               placeholder='Comment...' required className='h-48 w-full p-2 border border-gray-300 rounded outline-none'
                   ></textarea>
                   
@@ -85,8 +86,22 @@ export default function Blog() {
 
 
               </div>
+              {/* share buttons */}
+               <div className="my-24 max-w-3xl mx-auto">
+                 <p className="font-semibold my-4">
+                            Share this article on social media 
+                 </p>
+                 <div className="flex">
+                  <img src={assets.facebook_icon} width={50} alt="" />
+                  <img src={assets.twitter_icon} width={50} alt="" />
+                  <img src={assets.googleplus_icon} width={50} alt="" />
+                  
+                 </div>
+
+               </div>
 
             </div>
+            <Footer/>
 
 
     </div>
