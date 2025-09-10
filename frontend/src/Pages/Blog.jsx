@@ -63,6 +63,21 @@ export default function Blog() {
                 </div>
 
               </div>
+              {/* comment box */}
+              <div className="max-w-3xl mx-auto">
+                <p className='font-semibold mb-4'>Add Your Comments</p>
+                <form action="" onSubmit={addcomment} className='flex flex-col items-start gap-4 max-w-lg'  
+                >
+                  <input type="text" placeholder='Name' required className='w-full p-2 border border-gray-300 rounded outline-none'/>
+                  <textarea name="" id=""
+                              placeholder='Comment...' required className='h-48 w-full p-2 border border-gray-300 rounded outline-none'
+                  ></textarea>
+                  
+
+                </form>
+
+
+              </div>
 
             </div>
 
