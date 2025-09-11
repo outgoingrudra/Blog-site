@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function Loader() {
   return (
-    <div>Loader</div>
+    <div className='flex justify-center items-center h-screen'>
+        <div className="animate-spin rounded-full h-16 w-16  border-4 border-t-white  border-gray-700"></div>
+
+    </div>
   )
 }
