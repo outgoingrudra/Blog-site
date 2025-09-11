@@ -1,7 +1,7 @@
-cd.. 
-git add . 
-git commit -m " changes made"
-git push -u origin main 
-cd frontend
-npm run dev
+    cd.. 
+    git add . 
+    git commit -m " changes made"
+    git push -u origin main 
+    cd frontend
+    npm run dev
 
