@@ -7,6 +7,7 @@ import Dashboard from "./Pages/Admin/Dashboard";
 import AddBlog from "./Pages/Admin/AddBlog"
 import Comments from "./Pages/Admin/Comments"
 import ListBlog from "./Pages/Admin/ListBlog"
+import Login from "./Components/admin/Login";
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog/:id" element={<Blog />} />
-        <Route path="/admin" element={<Layout />} >
+        <Route path="/admin" element={false ? <Layout /> : <Login/>} >
            <Route index element={<Dashboard/>}/>
            <Route  path="addBlog" element={<AddBlog/>}/>
            <Route  path="listBlog" element={<ListBlog/>}/>
