@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Login() {
    
+  const [email , setEmail ] = useState("")
+  const [password,setPassword ] = useState("")
   
   const handleSubmit = (e) => {
   e.preventDefault();
@@ -22,19 +24,19 @@ export default function Login() {
                   </p>
 
             </div>
-            <form onSubmit={handleSubmit}  action="">
+            <form onSubmit={handleSubmit} className='mt-6  w-full sm:max-w-md  text-gray-600' action="">
               <div className="flex flex-col">
                    <label htmlFor="">
                       Email
                    </label>
-                   <input type="email" placeholder='your email id ' className='border-b-2 border-gray-300 p-2 outline-none mb-6' />
+                   <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" placeholder='your email id ' className='border-b-2 border-gray-300 p-2 outline-none mb-6' />
               </div>
 
                <div className="flex flex-col">
                    <label htmlFor="">
                       Password
                    </label>
-                   <input type="password" placeholder='your password ' className='border-b-2 border-gray-300 p-2 outline-none mb-6' />
+                   <input onChange={(e)=>setPassword(e.target.value)} value={password} type="password" placeholder='your password ' className='border-b-2 border-gray-300 p-2 outline-none mb-6' />
               </div>
               <button type='submit' className='w-full py-3 font-medium bg-primary text-white rounded cursor-pointer hover:bg-primary/90 
               transition-all' >Login</button>
