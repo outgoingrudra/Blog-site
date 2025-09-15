@@ -2,9 +2,11 @@ import React from 'react'
 
 export default function Login() {
    
-  const handleSubmit=(e)=>{
-           e.prevantDefault()
-  }
+  
+  const handleSubmit = (e) => {
+  e.preventDefault();
+};
+
 
   return (
     <div className='flex items-center justify-center h-screen'>
@@ -34,7 +36,8 @@ export default function Login() {
                    </label>
                    <input type="password" placeholder='your password ' className='border-b-2 border-gray-300 p-2 outline-none mb-6' />
               </div>
-
+              <button type='submit' className='w-full py-3 font-medium bg-primary text-white rounded cursor-pointer hover:bg-primary/90 
+              transition-all' >Login</button>
             </form>
           </div>
 
