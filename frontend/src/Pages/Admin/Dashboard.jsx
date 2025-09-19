@@ -23,7 +23,7 @@ export default function Dashboard() {
   {/* Stats cards wrapper */}
   <div className="flex flex-wrap gap-4">
 
-    <div className="flex items-center gap-4 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all">
+    <div className="flex items-center gap-4 bg-white p-4 min-w-[58px] rounded shadow cursor-pointer hover:scale-105 transition-all">
       <img src={assets.dashboard_icon_1} alt="" />
       <div>
         <p className='text-xl font-semibold text-gray-600'>{dashData.blogs}</p>
@@ -31,7 +31,7 @@ export default function Dashboard() {
       </div>
     </div>
 
-    <div className="flex items-center gap-4 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all">
+    <div className="flex items-center gap-4 bg-white p-4 min-w-[58px] rounded shadow cursor-pointer hover:scale-105 transition-all">
       <img src={assets.dashboard_icon_2} alt="" />
       <div>
         <p className='text-xl font-semibold text-gray-600'>{dashData.comments}</p>
@@ -39,7 +39,7 @@ export default function Dashboard() {
       </div>
     </div>
 
-    <div className="flex items-center gap-4 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all">
+    <div className="flex items-center gap-4 bg-white p-4 min-w-[58px] rounded shadow cursor-pointer hover:scale-105 transition-all">
       <img src={assets.dashboard_icon_3} alt="" />
       <div>
         <p className='text-xl font-semibold text-gray-600'>{dashData.drafts}</p>
@@ -55,16 +55,19 @@ export default function Dashboard() {
       <p>Latest Blogs</p>
     </div>
     <div className="relative  max-w-4xl overflow-x-auto shadow rounded-lg  scrollbar-hide bg-white ">
-      <table className='w-full  text-sm  text-gray-500'>
+      <table className='md:w-[800px] w-full text-sm  text-gray-500'>
         <thead className=' text-xs text-gray-600 text-left uppercase'>
            <tr>
-            <th scope='col' className='px-2 py-2'>#</th>
+            <th scope='col' className='px-2 py-2 xl:px-6'>#</th>
             <th scope='col' className='px-2 py-2'>Blog Title</th>
-            <th scope='col' className='px-2 py-2'>Date</th>
-            <th scope='col' className='px-2 py-2'>Status</th>
+            <th scope='col' className='px-2 py-2 max-sm:hidden'>Date</th>
+            <th scope='col' className='px-2 py-2 max-sm:hidden'>Status</th>
             <th scope='col' className='px-2 py-2'>Action</th>
            </tr>
         </thead>
+        <tbody>
+
+        </tbody>
       </table>
     </div>
   </div>
