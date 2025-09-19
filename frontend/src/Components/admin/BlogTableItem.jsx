@@ -1,4 +1,5 @@
 import React from 'react'
+import assets from '../../assets/assets';
 
 export default function BlogTableItem({blog,fetchBlog,index}) {
     const {title,createdAt} = blog;
@@ -14,9 +15,10 @@ export default function BlogTableItem({blog,fetchBlog,index}) {
             </p>
         </td>
         <td className="px-2 py-4 flex text-xs  gap-3">
-          <button className="">
+          <button className="border px-2  py-0.5  mt-1  rounded cursor-pointer">
             {!blog.isPublished ? 'Publish' : 'Unpublish'}
           </button>
+          <img src={assets.cross_icon} className='w-8 hover:scale-110 transition-all cursor-pointer' alt="" />
         </td>
 
 
