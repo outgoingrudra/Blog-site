@@ -12,13 +12,14 @@ export default function Comments() {
     fetchComment()
   },[])
   return (
-    <div className='flex pt-5 px-5  sm:pt-12  sm:pl-16 bg-blue-50/50'>
+    <div className='flex w-full pt-5 px-5  sm:pt-12  sm:pl-16 bg-blue-50/50'>
       <div className="flex justify-between items-center max-w-3xl">
         <h1 className="">
           Comments
         </h1>
         <div className="flex gap-4">
-          <button className={`shadow-custom-sm border rounded-full px-4 py-1  cursor-pointer text-xs ${filter == 'Approved' ? 'text-primary' : 'text-gray-700'}`}>Approved</button>
+          <button onClick={()=>setFilter('Approved')} className={`shadow-custom-sm border rounded-full px-4 py-1  cursor-pointer text-xs ${filter == 'Approved' ? 'text-primary' : 'text-gray-700'}`}>Approved</button>
+          <button onClick={()=>setFilter('Not Approved')} className={`shadow-custom-sm border rounded-full px-4 py-1  cursor-pointer text-xs ${filter == 'Not Approved' ? 'text-primary' : 'text-gray-700'}`}>Not Approved</button>
 
         </div>
       </div>
