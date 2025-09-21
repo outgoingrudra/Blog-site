@@ -1,4 +1,5 @@
 import React from 'react'
+import assets from '../../assets/assets'
 
 export default function CommentTable({comment,fetchComment}) {
     const {blog ,createdAt,_id }=comment
@@ -6,13 +7,22 @@ export default function CommentTable({comment,fetchComment}) {
   return (
    <tr className='order-y border-gray-300'>
     <td className='px-6 py-4'       >
-        <b>Blog</b> : {blog.title}
+        <b className='font-medium text-gray-600'>Blog</b> : {blog.title}
         <br></br>
         <br />
-        <b>Name</b> : {comment.name}
+        <b className='font-medium text-gray-600'>Name</b> : {comment.name}
         <br />
-        <b>Comment</b> : {comment.content}
+        <b className='font-medium text-gray-600'>Comment</b> : {comment.content}
 
+
+    </td>
+    <td className="px-6 py-4 max-sm:hidden">
+        {blogDate.toLocaleDateString()}
+    </td>
+    <td className="">
+          {!comment.isApproved ? <img src={assets.tick_icon} className='w-5 hover:scale-110  transition-all cursor-pointer' /> :
+           <p className='text-xs border border-green-600 bg-green-100 text-green-600 rounded-full px-3 py-1'>Approved</p>}
+           <img src={assets.bin_icon} alt="" />
 
     </td>
 
