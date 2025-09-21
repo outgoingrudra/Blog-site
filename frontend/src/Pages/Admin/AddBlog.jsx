@@ -4,6 +4,7 @@ import assets from '../../assets/assets'
 export default function AddBlog() {
    const [image ,setImage] = useState(false)
    const [title ,setTitle] = useState('')
+   const [subtitle ,setSubtitle] = useState('')
    const [category ,setcategory] = useState('startup')
    const [isPublished ,setisPublished] = useState(false)
 
@@ -21,6 +22,25 @@ export default function AddBlog() {
           <input onChange={(e)=>setImage(e.target.files[0])} type="file" className='' id='image' hidden required />
 
         </label>
+
+
+        <p className="mt-4">
+          
+          Blog Title
+        </p>
+        <input type="text" name="" id="" placeholder='Type here...' onChange={(e)=>setTitle(e.target.value)} 
+          value={title} required className='
+            w-full max-w-lg mt-2 p-2  border border-gray-300 outline-none  rounded
+          '/>
+
+          <p className="mt-4">
+          
+          Sub Title
+        </p>
+        <input type="text" name="" id="" placeholder='Type here...' onChange={(e)=>setSubtitle(e.target.value)} 
+          value={subtitle} required className='
+            w-full max-w-lg mt-2 p-2  border border-gray-300 outline-none  rounded
+          '/>
       </div>
 
     </form>
