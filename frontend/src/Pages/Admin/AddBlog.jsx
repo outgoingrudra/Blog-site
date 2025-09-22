@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import assets from "../../assets/assets";
+import assets, { blogCategories } from "../../assets/assets";
 import Quill from "quill";
 import Theme from "quill/core/theme";
 
@@ -84,6 +84,15 @@ export default function AddBlog() {
             Generate With AI
           </button>
         </div>
+                <p className="mt-4">Blog Description</p>
+                <select onChange={e=>setcategory(e.target.value)} name="category" id=""
+                  className="mt-2 px-3 py-2 border text-gray-500 border-gray-300 outline-none rounded">
+                  <option value="">Select Category</option>
+                  {blogCategories.map((item,idx)=>{
+                    return <option key={idx} value={item}>{item}</option>
+                  })}
+                </select>
+
       </div>
     </form>
   );
