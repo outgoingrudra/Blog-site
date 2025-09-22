@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import assets from "../../assets/assets";
 import Quill from "quill";
+import Theme from "quill/core/theme";
 
 export default function AddBlog() {
 
@@ -17,6 +18,13 @@ export default function AddBlog() {
   };
 
   const generateContent = async () => {};
+  
+
+  useEffect(()=>{
+    if(!quillRef.current  && editorRef.current){
+      quillRef.current = new  Quill(editorRef.current,{theme:'snow'})
+    }
+  },[])
 
   return (
     <form
