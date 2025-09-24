@@ -92,6 +92,11 @@ export default function AddBlog() {
                     return <option key={idx} value={item}>{item}</option>
                   })}
                 </select>
+                <div className="flex gap-2 mt-4">
+                  <p className="">Publish Now</p>
+                  <input type="checkbox" checked={isPublished} className="scale-125 cursor-pointer"  onChange={(e)=>setisPublished(e.target.checked)}/>
+                </div>
+                <button type="submit" className="mt-8 w-40 h-10 bg-primary text-white rounded cursor-pointer text-sm">Add Blog</button>
 
       </div>
     </form>
