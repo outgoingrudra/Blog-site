@@ -1,49 +1,60 @@
-import fs from "fs"
+import fs from "fs/promises"; // Use promises version for async operations
+// OR: import fs from "fs"; (keep current if you prefer sync)
 import imageKit from "../config/ImageKit.js";
-import { format } from "path";
-import Blog from "../models/Blog.js"
+import Blog from "../models/Blog.js";
 
-
-export const addBlog =async(req,res)=>{
+export const addBlog = async (req, res) => {
     try {
-        const {title,subTitle , description , category, isPublished , } = JSON.parse(req.body.blog)
+        const { title, subTitle, description, category, isPublished } = JSON.parse(req.body.blog);
 
-        const imageFile =  req.file;
-        if(!title || !description || !category || !imageFile){
-            return res.json({success:false ,message : "Missing required fields"})
+        const imageFile = req.file;
+        if (!title || !description || !category || !imageFile) {
+            return res.json({ success: false, message: "Missing required fields" });
         }
 
-        const fileBuffer = fs.readFileSync(imageFile.path)
+        // Option 1: Use async file reading (recommended)
+        const fileBuffer = await fs.readFile(imageFile.path);
+        
+        // Option 2: Keep sync version if preferred
+        // const fileBuffer = fs.readFileSync(imageFile.path);
 
-        //upload image to imagekit
+        // Upload image to imagekit
         const response = await imageKit.upload({
-            file : fileBuffer,
-            fileName : imageFile.originalName,
+            file: fileBuffer,
+            fileName: imageFile.originalname, // ✅ Fixed: use 'originalname' not 'originalName'
             folder: "/blogs"
-        })
+        });
 
-        //optimized url imagekit
+        // Optimized url imagekit
         const optimizedImageURL = imageKit.url({
             path: response.filePath,
-            transformation :[
-                {quality : 'auto'},// auto comprrssion
-                {format : 'webp'},
-                { width:'1280'}
+            transformation: [
+                { quality: 'auto' }, // auto compression
+                { format: 'webp' },
+                { width: '1280' }
             ]
-        })
+        });
 
-        const image = optimizedImageURL
+        const image = optimizedImageURL;
 
         await Blog.create({
-            title,subTitle,description,category,image,isPublished
-        })
+            title,
+            subTitle,
+            description,
+            category,
+            image,
+            isPublished
+        });
 
         res.json({
-            success:true, message : "Blog Added Successfully"
-        })
+            success: true,
+            message: "Blog Added Successfully"
+        });
     } catch (error) {
+        console.error("Blog creation error:", error); // Add logging for debugging
         res.json({
-            success:false, message : error.message
-        })
+            success: false,
+            message: error.message
+        });
     }
-}
+};
