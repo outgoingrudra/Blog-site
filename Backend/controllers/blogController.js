@@ -1,5 +1,6 @@
 import fs from "fs"
 import imageKit from "../config/ImageKit.js";
+import { format } from "path";
 export const addBlog =async(req,res)=>{
     try {
         const {title,subTitle , description , category, isPublished , } = JSON.parse(req.body.blog)
@@ -16,6 +17,16 @@ export const addBlog =async(req,res)=>{
             file : fileBuffer,
             fileName : imageFile.originalName,
             folder: "/blogs"
+        })
+
+        //optimized url imagekit
+        const optimizedImageURL = imageKit.url({
+            path: response.filePath,
+            transformation :[
+                {quality : 'auto'},
+                {format : 'webp'},
+                { width:'1280'}
+            ]
         })
     } catch (error) {
         
