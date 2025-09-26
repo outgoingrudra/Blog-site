@@ -5,8 +5,12 @@ const auth =(req,res,next)=>{
 
     try {
         jwt.verify(token,process.env.JWT_SECRET)
+        next()
         
     } catch (error) {
+        res.json({success:false ,message : "Invalid token"})
         
     }
 }
+
+export default auth
