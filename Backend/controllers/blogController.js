@@ -59,8 +59,6 @@ export const addBlog = async (req, res) => {
     }
 };
 
-
-
 export const getAllBlogs = async(req,res)=>{
     try {
         const blogs = await Blog.find({isPublished:true})
@@ -74,10 +72,10 @@ export const getAllBlogs = async(req,res)=>{
 export const getBlogById = async(req,res)=>{
     try {
 
-        const {blogId} = req.parse
+        const {blogId} = req.params  // ✅ FIXED: Changed from req.parse to req.params
         const blog = await  Blog.findById(blogId)
         if(!blog){
-              res.json({success:false , message:"Blog Not Found !"})
+              return res.json({success:false , message:"Blog Not Found !"})  // ✅ FIXED: Added return statement
         }
         res.json({success:true,blog})
         
@@ -86,9 +84,6 @@ export const getBlogById = async(req,res)=>{
 
     }
 }
-
-
-
 
 export const  deleteBlogById = async(req,res)=>{
 
@@ -106,14 +101,15 @@ export const  deleteBlogById = async(req,res)=>{
 
 }
 
-
-
 export const  togglePublish = async(req,res)=>{
 
      try {
 
         const {id} = req.body
          const blog = await  Blog.findById(id)
+         if (!blog) {  // ✅ ADDED: Error handling for blog not found
+            return res.json({ success: false, message: "Blog not found!" })
+         }
          blog.isPublished = !blog.isPublished
           await blog.save()
          
