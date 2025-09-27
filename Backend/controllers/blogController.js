@@ -86,3 +86,22 @@ export const getBlogById = async(req,res)=>{
 
     }
 }
+
+
+
+
+export const  deleteBlogById = async(req,res)=>{
+
+     try {
+
+        const {id} = req.body
+         await  Blog.findByIdAndDelete(id)
+        
+        res.json({success:true,message:"blog deleted successfully !"})
+        
+    } catch (error) {
+                  res.json({success:false , message:error.message})
+
+    }
+
+}
