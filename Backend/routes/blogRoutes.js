@@ -12,4 +12,7 @@ blogRouter.get('/:blogId',getBlogById)
 blogRouter.post('/delete',auth,deleteBlogById)
 blogRouter.post('/toggle-publish',auth,togglePublish)
 
+
+
+
 export default blogRouter
