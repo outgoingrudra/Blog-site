@@ -13,6 +13,17 @@ export const AppProvider = ({ children }) => {
     const [blogs, setBlogs] = useState([]);
     const [input, setInput] = useState("");
 
+
+    const fetchBlogs = async()=>{
+        try {
+            const {data} =  await axios.get('/api/blog/all')
+
+            data.success ?  setBlogs(data.blogs)  : 
+        } catch (error) {
+            
+        }
+    }
+
     const value = {
         axios,
         navigate,
@@ -23,6 +34,8 @@ export const AppProvider = ({ children }) => {
         input,
         setInput
     };
+
+
 
     return (
         <AppContext.Provider value={value}>
