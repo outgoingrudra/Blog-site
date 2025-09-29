@@ -78,6 +78,12 @@ export const deleteCommentById = async(req,res)=>{
 
 
 
+        //del all comments related to it 
+
+        await Comment.deleteMany({blog:id})
+
+
+
         
     } catch (error) {
                    res.json({success:false , message : error.message})
@@ -93,7 +99,7 @@ export const approveCommentByID= async(req,res)=>{
         const {id} = req.body
         await Comment.findByIdAndUpdate(id,{isApproved:true})
 
-        res.json({success:true , message: " Comment approved  Successfully " })
+        res.json({success:true , message: " Comment approved Successfully " })
 
 
 
@@ -103,4 +109,6 @@ export const approveCommentByID= async(req,res)=>{
 
     }
 }
+
+
 
