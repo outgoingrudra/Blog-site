@@ -84,3 +84,23 @@ export const deleteCommentById = async(req,res)=>{
 
     }
 }
+
+
+
+export const approveCommentByID= async(req,res)=>{
+
+    try {
+        const {id} = req.body
+        await Comment.findByIdAndUpdate(id,{isApproved:true})
+
+        res.json({success:true , message: " Comment approved  Successfully " })
+
+
+
+        
+    } catch (error) {
+                   res.json({success:false , message : error.message})
+
+    }
+}
+
