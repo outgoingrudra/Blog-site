@@ -1,10 +1,22 @@
-const { createContext, useContext } = require("react");
+const { createContext, useContext, useState } = require("react");
+const axios = require('axios')
+const {useNavigate} = require('react-router-dom')
+
+
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL 
+
+
 
 
 const  AppContext = createContext()
 
 export const AppProvider =({children})=>{
 
+
+    const navigate = useNavigate()
+
+    const [token ,setToken] = useState(null)
+    
     const value = {}
     return  <AppContext.prototype value={value}>
         {children}
