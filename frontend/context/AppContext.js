@@ -16,8 +16,13 @@ export const AppProvider =({children})=>{
     const navigate = useNavigate()
 
     const [token ,setToken] = useState(null)
-    
-    const value = {}
+    const [blogs ,setBlogs] = useState([])
+    const [input ,setInput] = useState("")
+
+    const value = {
+
+         axios , navigate , token , setToken , blogs, setBlogs , input , setInput
+    }
     return  <AppContext.prototype value={value}>
         {children}
     </AppContext.prototype>
