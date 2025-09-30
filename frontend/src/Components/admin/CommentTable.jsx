@@ -1,12 +1,60 @@
 import React from 'react'
 import assets from '../../assets/assets'
 import {useAppContext} from "../../context/AppContext"
+import toast from 'react-hot-toast'
 
 export default function CommentTable({comment,fetchComment}) {
     const {blog ,createdAt,_id }=comment
     const blogDate = new Date(createdAt)
 
     const {axios} = useAppContext()
+    const approveComment=async()=>{
+
+
+        try {
+            
+            const {data} = await axios.post('/api/admin/approve-comment',{id:_id})
+            
+            if(data.success){
+                toast.success(data.message)
+                fetchComment()
+            }
+            else{
+                 toast.error(data.message)
+            }
+        } catch (error) {
+                 toast.error(error.message)
+            
+        }
+    }
+
+
+     const deleteComment =async()=>{
+
+       
+
+        try {
+
+         const confirm = window.confirm('Are you sure you want to delete this comment ? ')
+
+         if(!confirm) return 
+
+
+            
+            const {data} = await axios.post('/api/admin/delete-comment',{id:_id})
+            
+            if(data.success){
+                toast.success(data.message)
+                fetchComment()
+            }
+            else{
+                 toast.error(data.message)
+            }
+        } catch (error) {
+                 toast.error(error.message)
+            
+        }
+    }
 
     
   return (
