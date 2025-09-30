@@ -3,6 +3,7 @@ import { blog_data } from "../../assets/assets";
 import BlogTableItem from "../../Components/admin/BlogTableItem";
 import assets from "../../assets/assets";
 import { useAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 export default function ListBlog() {
   const [blogs, setBlogs] = useState([]);
@@ -12,9 +13,18 @@ export default function ListBlog() {
   const fetchBlogs = async () => {
    
     try {
+      const {data} =await  axios.get('/api/admin/blogs')
+
+      if(data.success){
+        setBlogs(data.blogs)
+      }
+      else{
+        toast.error(data.message)
+      }
       
     } catch (error) {
-      
+           toast.error(error.message)
+
     }
   };
 
