@@ -41,8 +41,9 @@ export default function AddBlog() {
       toast.success(data.message)
       setImage(false)
       setTitle('')
+      setSubtitle('')
       quillRef.current.root.innerHTML=''
-      setcategory('Startup')
+      setcategory('startup')
       
      }
      else {

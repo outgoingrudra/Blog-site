@@ -2,12 +2,20 @@ import React, { useEffect, useState } from "react";
 import { blog_data } from "../../assets/assets";
 import BlogTableItem from "../../Components/admin/BlogTableItem";
 import assets from "../../assets/assets";
+import { useAppContext } from "../../context/AppContext";
 
 export default function ListBlog() {
   const [blogs, setBlogs] = useState([]);
 
+  const {axios} = useAppContext()
+
   const fetchBlogs = async () => {
-    setBlogs(blog_data);
+   
+    try {
+      
+    } catch (error) {
+      
+    }
   };
 
   useEffect(() => {
