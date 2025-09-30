@@ -39,7 +39,22 @@ const {axios } = useAppContext()
   }
 
   const fetchComments = async()=>{
-    setComment(comments_data)
+   
+
+    try {
+      
+      const {data} = await axios.post('api/blog/comments',{blogId:id})
+
+      if(data.success){
+        setComment(data.comments)
+      }
+      else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+     toast.error(error.message)
+     
+    }
 
   }
   const addcomment =async()=>{
