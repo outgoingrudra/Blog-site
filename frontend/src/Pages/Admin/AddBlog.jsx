@@ -11,6 +11,7 @@ export default function AddBlog() {
   const {axios} = useAppContext()
 
   const [isAdding , setIsAdding] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const editorRef = useRef(null)
   const quillRef = useRef(null)
@@ -19,6 +20,28 @@ export default function AddBlog() {
   const [subtitle, setSubtitle] = useState("");
   const [category, setcategory] = useState("startup");
   const [isPublished, setisPublished] = useState(false);
+
+
+  const generateContent  = async()=>{
+    if(!title) return toast.error('Please enter a title')
+
+
+      try {
+        setLoading(true)
+        const {data} = await axios.post('/api/blog/generate',{prompt:title})
+        if(data.success){
+
+          quillRef.current.root.innerHTML = parse(data.content)
+          
+
+        }
+
+        
+      } catch (error) {
+        
+      }
+
+  }
 
   const onSubmitHandler = async(e) => {
     try {
