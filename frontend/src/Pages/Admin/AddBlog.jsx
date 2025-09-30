@@ -22,7 +22,7 @@ export default function AddBlog() {
 
   const onSubmitHandler = async(e) => {
     try {
-      e.prevantDefault();
+     e.preventDefault();  // ✅ Correct spelling
       setIsAdding(true)
 
       const blog = {
@@ -38,11 +38,23 @@ export default function AddBlog() {
      const {data } = await axios.post('/api/blog/add',formData)
 
      if(data.success){
-      toast.success()
+      toast.success(data.message)
+      setImage(false)
+      setTitle('')
+      quillRef.current.root.innerHTML=''
+      setcategory('Startup')
+      
+     }
+     else {
+      toast.error(data.message)
      }
 
     } catch (error) {
-      
+        toast.error(error.message)
+
+    }
+    finally{
+      setIsAdding(false)
     }
   };
 

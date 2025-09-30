@@ -1,9 +1,9 @@
-import ImageKit from '@imagekit/nodejs';
+import ImageKit from 'imagekit';  // ✅ Changed from '@imagekit/nodejs' to 'imagekit'
 
 const imageKit = new ImageKit({
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY, // This is the default and can be omitted
-  publicKey: process.env.IMAGEKIT_PUBLIC_KEY, // This is the default and can be omitted
-  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT, // This is the default and can be omitted
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
 });
 
-export default imageKit
+export default imageKit;
