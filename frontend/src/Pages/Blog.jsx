@@ -57,8 +57,28 @@ const {axios } = useAppContext()
     }
 
   }
-  const addcomment =async()=>{
-    console.log("COMMENT ADDED !!! ")
+  const addcomment =async(e)=>{
+    e.preventDefault()
+
+    try {
+         const {data} = await axios.post('api/blog/add-comment',{blog : id , name , content})
+
+         if(data.success){
+          toast.success(data.message)
+          setName('')
+          setContent('')
+         }
+         else{
+          toast.error(data.error)
+         }
+
+    } catch (error) {
+          toast.error(error.message)
+
+    }
+
+
+
   }
 
   useEffect(()=>{
