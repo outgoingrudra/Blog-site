@@ -1,9 +1,14 @@
 import React from 'react'
 import assets from '../../assets/assets'
+import {useAppContext} from "../../context/AppContext"
 
 export default function CommentTable({comment,fetchComment}) {
     const {blog ,createdAt,_id }=comment
     const blogDate = new Date(createdAt)
+
+    const {axios} = useAppContext()
+
+    
   return (
    <tr className='order-y border-gray-300'>
     <td className='px-6 py-4'       >
