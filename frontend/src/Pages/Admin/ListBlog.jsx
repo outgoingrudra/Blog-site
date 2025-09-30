@@ -60,7 +60,7 @@ export default function ListBlog() {
                     <BlogTableItem
                       key={b._id}
                       blog={b}
-                      fetchBlog={fetchBlogs}
+                      fetchBlogs={fetchBlogs}
                       index={i + 1}
                     />
                   ))}

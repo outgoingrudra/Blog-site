@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import assets, { dashboard_data } from '../../assets/assets'
 import BlogTableItem from '../../Components/admin/BlogTableItem'
+import { useAppContext } from '../../context/AppContext'
 
 export default function Dashboard() {
   const [dashData,setdashData]= useState({
@@ -11,8 +12,11 @@ export default function Dashboard() {
 
   })
 
+
+  const {axios}= useAppContext()
   const fetchData =async ()=>{
-    setdashData(dashboard_data)
+    
+  
 
   }
   useEffect(()=>{
