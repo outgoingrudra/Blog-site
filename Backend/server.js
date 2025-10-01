@@ -8,10 +8,10 @@ import blogRouter from "./routes/blogRoutes.js"
 const app = express()
 await connectDB()
 
-// ✅ CORS Middleware - MUST come before routes
+// ✅ CORS Configuration - Allow your frontend
 app.use(cors({
   origin: [
-    'https://blog-site-gn4w.vercel.app', // Your frontend URL
+    'https://blog-site-gn4w.vercel.app', // Your frontend production URL
     'http://localhost:5173',
     'http://localhost:3000'
   ],

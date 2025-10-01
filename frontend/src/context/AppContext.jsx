@@ -1,9 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import axios from 'axios';
+import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
 
-axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+// ✅ Create axios instance with production backend URL
+const axios = Axios.create({
+    baseURL: 'https://blog-site-sepia-gamma.vercel.app',
+    withCredentials: true
+});
 
 const AppContext = createContext();
 
@@ -14,28 +18,28 @@ export const AppProvider = ({ children }) => {
     const [blogs, setBlogs] = useState([]);
     const [input, setInput] = useState("");
 
-
-    const fetchBlogs = async()=>{
+    const fetchBlogs = async () => {
         try {
-            const {data} =  await axios.get('/api/blog/all')
+            const { data } = await axios.get('/api/blog/all')
 
-            data.success ?  setBlogs(data.blogs)  : toast.error(data.message)
+            if (data.success) {
+                setBlogs(data.blogs)
+            } else {
+                toast.error(data.message)
+            }
         } catch (error) {
             toast.error(error.message)
-            
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchBlogs()
         const token = localStorage.getItem('token')
-        if(token){
+        if (token) {
             setToken(token)
             axios.defaults.headers.common['Authorization'] = `${token}`
         }
-    },[])
-
-
+    }, [])
 
     const value = {
         axios,
@@ -45,10 +49,9 @@ export const AppProvider = ({ children }) => {
         blogs,
         setBlogs,
         input,
-        setInput
+        setInput,
+        fetchBlogs // ✅ Added fetchBlogs to context so other components can use it
     };
-
-
 
     return (
         <AppContext.Provider value={value}>
